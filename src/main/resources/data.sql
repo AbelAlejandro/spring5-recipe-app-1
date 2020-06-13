@@ -1,0 +1,11 @@
+INSERT INTO category(description) VALUES ('American');
+INSERT INTO category(description) VALUES ('Italian');
+INSERT INTO category(description) VALUES ('Haute Cuisine');
+INSERT INTO category(description) VALUES ('Meal Prep');
+INSERT INTO unit_of_measure(description) VALUES ('Teaspoon');
+INSERT INTO unit_of_measure(description) VALUES ('Tablespoon');
+INSERT INTO unit_of_measure(description) VALUES ('L');
+INSERT INTO unit_of_measure(description) VALUES ('mL');
+INSERT INTO unit_of_measure(description) VALUES ('dL');
+INSERT INTO unit_of_measure(description) VALUES ('Pinch');
+INSERT INTO unit_of_measure(description) VALUES ('Pinch');
