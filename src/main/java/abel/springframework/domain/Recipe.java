@@ -1,6 +1,7 @@
 package abel.springframework.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,9 @@ public class Recipe {
     private String description;
     private String url;
     private String source;
-    private String instructions;
+
+    @Lob
+    private String directions;
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
@@ -21,10 +24,10 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
     joinColumns = @JoinColumn(name = "recipe_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
     private Byte[] image;
@@ -75,12 +78,12 @@ public class Recipe {
         this.source = source;
     }
 
-    public String getInstructions() {
-        return instructions;
+    public String getDirections() {
+        return directions;
     }
 
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public Integer getPrepTime() {
@@ -121,6 +124,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
+    }
+
+    public Recipe addIngredient(Ingredient ingredient) {
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Difficulty getDifficulty() {
@@ -129,5 +139,13 @@ public class Recipe {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
