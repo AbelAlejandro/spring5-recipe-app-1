@@ -1,4 +1,4 @@
-package guru.springframework;
+package abel.springframework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

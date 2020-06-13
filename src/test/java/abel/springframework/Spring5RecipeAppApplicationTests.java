@@ -1,4 +1,4 @@
-package guru.springframework;
+package abel.springframework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
